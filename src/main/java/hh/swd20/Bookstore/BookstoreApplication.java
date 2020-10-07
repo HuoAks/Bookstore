@@ -29,25 +29,19 @@ public class BookstoreApplication {
 	public CommandLineRunner demo(BookRepository bookRepository, CategoryRepository categoryRepository) {
 	return (args) -> {
 		
-		log.info("Save some categories");
+		log.info("Save some books");
 		Category category1 = new Category("Horror");
 		categoryRepository.save(category1);  // saving the 1st category
 		Category category2 = new Category("Fantasy");
 		categoryRepository.save(category2);  //saving the 2nd category					
 		Category category3 = new Category("Romance");
 		categoryRepository.save(category3); //saving the 3rd category
+		Category category4 = new Category("Fiction");
+		categoryRepository.save(category4); 
 		
-		log.info("fetch all categories");
-		for (Category category : categoryRepository.findAll()) {
-			log.info(category.toString());
-		}
 		
-		log.info("Save some books");
-		
-		Book book1 = new Book("Harry Potter", "J.K. Rowling", 1997, "1234", 19.50);
-		Book book2 = new Book("Musta Kobra", "Ilkka Remes", 2004, "5678", 18.30 );
-		bookRepository.save(book1);	// Saving the first book into the db.
-		bookRepository.save(book2); // Saving the 2nd book into the db.
+		bookRepository.save(new Book("Harry Potter", "J.K. Rowling", 1997, "1234", 19.50, category2));	// Saving the first book with category.
+		bookRepository.save(new Book("Musta Kobra", "Ilkka Remes", 2004, "5678", 18.30, category4)); // Saving the 2nd book with category.
 		
 		log.info("fetch all books");
 		for (Book book : bookRepository.findAll()) {
