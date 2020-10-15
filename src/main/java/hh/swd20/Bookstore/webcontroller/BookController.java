@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import hh.swd20.Bookstore.domain.BookRepository;
 import hh.swd20.Bookstore.domain.Book;
 import hh.swd20.Bookstore.domain.CategoryRepository;
+import hh.swd20.Bookstore.domain.Category;
 
 @Controller
 public class BookController {
@@ -69,6 +70,7 @@ public class BookController {
 		@RequestMapping("/edit/{id}")
 		public String editBook(@PathVariable("id") Long bookId, Model model) {
 		model.addAttribute("book", bookRepository.findById(bookId));
+		model.addAttribute("categories", categoryRepository.findAll());
 		return "editbook";
 		}
 		// RESTful service to get all books
