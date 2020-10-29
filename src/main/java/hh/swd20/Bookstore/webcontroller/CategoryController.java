@@ -15,6 +15,7 @@ public class CategoryController {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
+	
 	// List all categories
 	@RequestMapping(value = "/categorylist", method = RequestMethod.GET)
 	public String getCategories(Model model) {

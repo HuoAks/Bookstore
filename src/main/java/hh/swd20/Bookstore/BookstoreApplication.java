@@ -1,4 +1,4 @@
-package hh.swd20.Bookstore;
+	package hh.swd20.Bookstore;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +27,7 @@ public class BookstoreApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
+	
 	@Bean
 	public CommandLineRunner demo(BookRepository bookRepository, CategoryRepository categoryRepository, UserRepository urepository) {
 	return (args) -> {
@@ -54,6 +55,11 @@ public class BookstoreApplication {
 		log.info("fetch all books");
 		for (Book book : bookRepository.findAll()) {
 			log.info(book.toString());
+			
+		log.info("fetch all categories");
+		for (Category category : categoryRepository.findAll()) {
+			log.info(category.toString());
+		}
 			
 		}
 	};
